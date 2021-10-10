@@ -41,7 +41,7 @@ const pause = () => {
 
     readline.question(`\nPress ${'ENTER'.bgWhite.black} to continue\n`, (opt) => {
       readline.close();
-      resolve(opt)
+      resolve();
     })
   });
 }
