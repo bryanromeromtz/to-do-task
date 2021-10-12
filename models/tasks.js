@@ -1,15 +1,24 @@
 const Task = require('./task');
 
 class Tareas {
-  _list = {};
+  _listed = {};
+
+  get listedArr() {
+    const listed = [];
+    Object.keys(this._listed).forEach(list => {
+      const task = this._listed[list];
+      listed.push(task);
+    });
+    return listed;
+  }
 
   constructor() {
-    this._list = {};
+    this._listed = {};
   }
 
   createTask(desc = '') {
     const task = new Task(desc);
-    this._list[task._id] = task;
+    this._listed[task._id] = task;
   }
 }
 
