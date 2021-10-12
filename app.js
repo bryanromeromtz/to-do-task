@@ -5,7 +5,7 @@ const {
   inquirerPause,
   readInput
 } = require('./helpers/inquirer');
-const { saveDB } = require('./helpers/saveFile');
+const { saveDB, readDB } = require('./helpers/interactionDB');
 
 const Tasks = require('./models/tasks');
 
@@ -14,6 +14,11 @@ const main = async () => {
 
   let opt = '';
   const tasks = new Tasks();
+  const taskDB = readDB();
+  if (taskDB) {
+    // READ TASKS
+  }
+  await inquirerPause();
 
   do {
     opt = await inquirerMenu();
@@ -29,7 +34,6 @@ const main = async () => {
     }
 
     saveDB(tasks.listedArr);
-
 
     await inquirerPause();
   } while (opt !== '0');
