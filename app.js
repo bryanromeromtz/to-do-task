@@ -5,6 +5,7 @@ const {
   inquirerPause,
   readInput
 } = require('./helpers/inquirer');
+const { saveDB } = require('./helpers/saveFile');
 
 const Tasks = require('./models/tasks');
 
@@ -25,8 +26,9 @@ const main = async () => {
       case '2':
         console.log(tasks.listedArr);
         break;
-
     }
+
+    saveDB(tasks.listedArr);
 
 
     await inquirerPause();
