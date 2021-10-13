@@ -10,15 +10,15 @@ const { saveDB, readDB } = require('./helpers/interactionDB');
 const Tasks = require('./models/tasks');
 
 
+
 const main = async () => {
 
   let opt = '';
   const tasks = new Tasks();
-  const taskDB = readDB();
-  if (taskDB) {
-    // READ TASKS
+  const tasksDB = readDB();
+  if (tasksDB) {
+    tasks.loadTasksFromArray(tasksDB);
   }
-  await inquirerPause();
 
   do {
     opt = await inquirerMenu();
